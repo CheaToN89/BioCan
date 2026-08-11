@@ -10,7 +10,14 @@ import Marinos from '../screens/fauna/Marinos';
 import Terrestres from '../screens/fauna/Terrestres';
 import Aves from '../screens/fauna/Aves';
 
-import Flora from '../screens/Flora';
+import FloraInicio from '../screens/flora/FloraInicio';
+import Arboles from '../screens/flora/Arboles';
+import Arbustos from '../screens/flora/Arbustos';
+import Plantas from '../screens/flora/Plantas';
+import Flores from '../screens/flora/Flores';
+import Marina from '../screens/flora/Marina';
+import Hongos from '../screens/flora/Hongos';
+import Liquenes from '../screens/flora/Liquenes';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -50,8 +57,50 @@ function InicioStack() {
 
       <Stack.Screen
         name="Flora"
-        component={Flora}
+        component={FloraInicio}
         options={{ title: 'Flora' }}
+      />
+
+      <Stack.Screen
+        name="Arboles"
+        component={Arboles}
+        options={{ title: 'Árboles' }}
+      />
+
+      <Stack.Screen
+        name="Arbustos"
+        component={Arbustos}
+        options={{ title: 'Arbustos' }}
+      />
+
+      <Stack.Screen
+        name="Plantas"
+        component={Plantas}
+        options={{ title: 'Plantas' }}
+      />
+
+      <Stack.Screen
+        name="Flores"
+        component={Flores}
+        options={{ title: 'Flores' }}
+      />
+
+      <Stack.Screen
+        name="Marina"
+        component={Marina}
+        options={{ title: 'Flora marina' }}
+      />
+
+      <Stack.Screen
+        name="Hongos"
+        component={Hongos}
+        options={{ title: 'Hongos' }}
+      />
+
+      <Stack.Screen
+        name="Liquenes"
+        component={Liquenes}
+        options={{ title: 'Líquenes' }}
       />
     </Stack.Navigator>
   );
