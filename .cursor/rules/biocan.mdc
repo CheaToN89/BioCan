@@ -1,3 +1,252 @@
 ---
+description: Reglas maestras del proyecto BioCan
 alwaysApply: true
 ---
+
+# BioCan — Reglas maestras
+
+## 1. Proyecto
+
+BioCan es una aplicación móvil de biodiversidad de Canarias.
+
+Permitirá:
+- explorar fauna y flora;
+- descubrir especies;
+- registrar avistamientos;
+- asociar fotografías;
+- consultar los descubrimientos personales en Mi DEX;
+- visualizar los avistamientos con ubicación en un mapa.
+
+El proyecto debe construirse progresivamente, de forma limpia, sencilla y preparada para crecer.
+
+## 2. Tecnología
+
+- React Native
+- Expo
+- TypeScript
+
+No cambiar estas tecnologías sin consultar previamente.
+
+No instalar dependencias nuevas sin explicar:
+1. para qué sirven;
+2. por qué son necesarias;
+3. qué alternativas existen.
+
+## 3. Forma de trabajo
+
+Trabajar siempre por pasos pequeños y comprobables.
+
+Antes de un cambio importante:
+1. explicar brevemente el plan;
+2. indicar qué archivos se modificarán;
+3. realizar el cambio;
+4. comprobar que funciona;
+5. informar de cualquier problema.
+
+No implementar funcionalidades que no hayan sido solicitadas.
+
+## 4. Arquitectura
+
+Mantener una arquitectura limpia, modular y escalable.
+
+- Usar componentes reutilizables.
+- Evitar código duplicado.
+- Mantener separadas las responsabilidades.
+- Evitar archivos innecesariamente grandes.
+- No cambiar la arquitectura sin autorización.
+- No borrar código funcional para solucionar otro problema.
+
+Si existen varias soluciones razonables, explicar las opciones y recomendar una.
+
+Las decisiones importantes de arquitectura requieren aprobación antes de implementarse.
+
+## 5. Conceptos fundamentales
+
+Mantener separados:
+
+### Especie
+Una especie real de biodiversidad.
+
+### Mi DEX
+Las especies que el usuario ha descubierto.
+
+### Avistamiento
+Una ocasión concreta en la que el usuario observa una especie.
+
+Una especie puede tener muchos avistamientos.
+
+Registrar el primer avistamiento de una especie hace que esa especie pase a estar descubierta en Mi DEX.
+
+## 6. Navegación principal
+
+La aplicación tendrá inicialmente:
+
+- 🏠 Inicio
+- 📖 Mi DEX
+- ☰ Más
+
+### Inicio
+
+Debe permitir:
+- buscar una especie;
+- acceder a Fauna;
+- acceder a Flora.
+
+### Fauna
+
+Se divide inicialmente en:
+- 🌊 Marinos
+- 🌍 Terrestres
+- 🐦 Aves
+
+Todas las aves pertenecen a Aves independientemente de que sean marinas, terrestres o migratorias.
+
+### Flora
+
+Incluye inicialmente:
+- 🌳 Árboles
+- 🌿 Arbustos
+- 🌱 Plantas
+- 🌸 Flores
+
+## 7. Mi DEX
+
+Mi DEX es el centro de la actividad personal del usuario.
+
+Incluye:
+- 🐾 Mis especies
+- 🗺️ Mi mapa
+- 📊 Mi progreso
+- 📸 Mis fotografías
+
+No crear Avistamientos como pestaña principal independiente.
+
+Los avistamientos se registran desde la ficha de cada especie.
+
+## 8. Ficha de especie
+
+Cada especie tendrá una ficha propia.
+
+Puede incluir:
+- nombre común;
+- nombre científico;
+- clasificación;
+- descripción;
+- hábitat;
+- distribución;
+- características;
+- fotografías de referencia;
+- estado de descubrimiento;
+- número de avistamientos.
+
+Debe existir una acción clara:
+"Registrar avistamiento".
+
+## 9. Avistamientos
+
+Un avistamiento pertenece a una especie y al usuario.
+
+Puede contener:
+- fecha;
+- ubicación;
+- fotografía;
+- profundidad o altitud cuando corresponda;
+- notas.
+
+La ubicación es OPCIONAL.
+
+No asumir que todos los seres vivos tienen profundidad.
+
+Los campos deben adaptarse al tipo de especie cuando sea necesario.
+
+## 10. Fotografías
+
+BioCan no implementará inicialmente una cámara propia.
+
+Para añadir fotografías se utilizarán las funciones nativas del dispositivo:
+- cámara;
+- biblioteca/galería.
+
+La fotografía se asociará al avistamiento.
+
+## 11. Mi mapa
+
+Mi mapa pertenece a Mi DEX.
+
+Representará los avistamientos del usuario que tengan ubicación.
+
+La ubicación es opcional.
+
+Debe utilizar clustering:
+
+- al alejarse, los avistamientos cercanos se agrupan;
+- el grupo muestra el número de avistamientos;
+- al acercarse, los grupos se separan progresivamente;
+- con suficiente zoom se muestran los avistamientos individuales.
+
+El mapa debe representar las Islas Canarias de forma sencilla y clara.
+
+No mostrar ubicación si el usuario no la proporcionó.
+
+## 12. Privacidad
+
+No solicitar ni guardar ubicación sin que el usuario la indique o autorice.
+
+No compartir automáticamente la ubicación de los avistamientos con otros usuarios.
+
+La privacidad debe considerarse desde el diseño inicial.
+
+## 13. Interfaz
+
+Diseñar principalmente para móvil.
+
+Prioridades:
+1. simplicidad;
+2. claridad;
+3. facilidad de uso;
+4. navegación intuitiva;
+5. accesibilidad;
+6. buen rendimiento.
+
+Evitar interfaces saturadas.
+
+## 14. Git
+
+Utilizar Git durante todo el desarrollo.
+
+Realizar commits pequeños y descriptivos.
+
+Antes de un commit:
+- comprobar que el cambio funciona;
+- revisar cambios accidentales.
+
+No hacer push automáticamente sin indicarlo.
+
+No realizar cambios destructivos en Git sin autorización.
+
+## 15. Seguridad
+
+No introducir contraseñas, secretos o claves API directamente en el código.
+
+Utilizar mecanismos seguros cuando corresponda.
+
+No desactivar controles de seguridad para solucionar errores.
+
+## 16. Regla fundamental
+
+BioCan se construirá paso a paso.
+
+No asumir requisitos que no hayan sido definidos.
+
+No inventar funcionalidades.
+
+No cambiar decisiones importantes de diseño o arquitectura sin consultar.
+
+Si una decisión puede afectar significativamente al futuro del proyecto:
+- detenerse;
+- explicar el problema;
+- presentar opciones;
+- recomendar una;
+- esperar aprobación.
+
+La prioridad es construir una aplicación sencilla, sólida y mantenible antes de añadir funcionalidades avanzadas.
