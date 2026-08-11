@@ -1,19 +1,46 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Inicio from '../screens/Inicio';
 import MiDex from '../screens/MiDex';
 import Mas from '../screens/Mas';
+import Fauna from '../screens/Fauna';
+import Flora from '../screens/Flora';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function InicioStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="InicioPrincipal"
+        component={Inicio}
+        options={{ title: 'BioCan' }}
+      />
+
+      <Stack.Screen
+        name="Fauna"
+        component={Fauna}
+        options={{ title: 'Fauna' }}
+      />
+
+      <Stack.Screen
+        name="Flora"
+        component={Flora}
+        options={{ title: 'Flora' }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function AppNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Inicio"
-        component={Inicio}
+        component={InicioStack}
         options={{
-          title: 'Inicio',
           tabBarLabel: 'Inicio',
         }}
       />
@@ -22,7 +49,6 @@ export default function AppNavigator() {
         name="Mi DEX"
         component={MiDex}
         options={{
-          title: 'Mi DEX',
           tabBarLabel: 'Mi DEX',
         }}
       />
@@ -31,7 +57,6 @@ export default function AppNavigator() {
         name="Más"
         component={Mas}
         options={{
-          title: 'Más',
           tabBarLabel: 'Más',
         }}
       />

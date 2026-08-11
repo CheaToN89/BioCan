@@ -1,6 +1,17 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-export default function Inicio() {
+type InicioNavigationProp = BottomTabNavigationProp<{
+  Inicio: undefined;
+  'Mi DEX': undefined;
+  Más: undefined;
+}>;
+
+type Props = {
+  navigation: InicioNavigationProp;
+};
+
+export default function Inicio({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>BioCan</Text>
@@ -10,12 +21,18 @@ export default function Inicio() {
       </Text>
 
       <View style={styles.buttonsContainer}>
-        <Pressable style={styles.button}>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate('Fauna')}
+        >
           <Text style={styles.buttonIcon}>🐾</Text>
           <Text style={styles.buttonText}>Fauna</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate('Flora')}
+        >
           <Text style={styles.buttonIcon}>🌿</Text>
           <Text style={styles.buttonText}>Flora</Text>
         </Pressable>
