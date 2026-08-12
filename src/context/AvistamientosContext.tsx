@@ -29,6 +29,7 @@ export type ResultadoRegistro = {
 type AvistamientosContextValue = {
   avistamientos: Avistamiento[];
   isLoading: boolean;
+  error: string | null;
   registrarAvistamiento: (input: RegistrarAvistamientoInput) => Promise<ResultadoRegistro>;
   quitarEspecieDelDex: (especieId: string) => Promise<void>;
   isDescubierta: (especieId: string) => boolean;
@@ -49,6 +50,15 @@ function fechaHoy(): string {
 }
 
 
+function obtenerMensajeError(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return 'Error desconocido al cargar avistamientos';
+}
+
+
 export function AvistamientosProvider({
   children,
 }: {
@@ -56,17 +66,29 @@ export function AvistamientosProvider({
 }) {
   const [avistamientos, setAvistamientos] = useState<Avistamiento[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
 
   useEffect(() => {
     loadAvistamientos()
-      .then(setAvistamientos)
+      .then((datos) => {
+        setAvistamientos(datos);
+        setError(null);
+      })
+      .catch((caughtError) => {
+        setAvistamientos([]);
+        setError(obtenerMensajeError(caughtError));
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
 
   const registrarAvistamiento = useCallback(
     async ({ especieId, fecha, notas }: RegistrarAvistamientoInput): Promise<ResultadoRegistro> => {
+      if (isLoading) {
+        return { yaRegistrada: true };
+      }
+
       let yaRegistrada = false;
       let actualizados: Avistamiento[] = [];
 
@@ -96,11 +118,15 @@ export function AvistamientosProvider({
 
       return { yaRegistrada: false };
     },
-    [],
+    [isLoading],
   );
 
 
   const quitarEspecieDelDex = useCallback(async (especieId: string) => {
+    if (isLoading) {
+      return;
+    }
+
     let actualizados: Avistamiento[] = [];
 
     setAvistamientos((prev) => {
@@ -109,7 +135,7 @@ export function AvistamientosProvider({
     });
 
     await saveAvistamientos(actualizados);
-  }, []);
+  }, [isLoading]);
 
 
   const isDescubierta = useCallback(
@@ -130,6 +156,7 @@ export function AvistamientosProvider({
     () => ({
       avistamientos,
       isLoading,
+      error,
       registrarAvistamiento,
       quitarEspecieDelDex,
       isDescubierta,
@@ -138,6 +165,7 @@ export function AvistamientosProvider({
     [
       avistamientos,
       isLoading,
+      error,
       registrarAvistamiento,
       quitarEspecieDelDex,
       isDescubierta,
