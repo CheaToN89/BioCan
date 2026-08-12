@@ -14,11 +14,12 @@ import FloraInicio from '../screens/flora/FloraInicio';
 
 import EspeciesLista from '../screens/species/EspeciesLista';
 import FichaEspecie from '../screens/species/FichaEspecie';
-import { InicioStackParamList } from './types';
+import { InicioStackParamList, MiDexStackParamList } from './types';
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<InicioStackParamList>();
+const MiDexStackNavigator = createNativeStackNavigator<MiDexStackParamList>();
 
 
 function InicioStack() {
@@ -87,6 +88,28 @@ function InicioStack() {
 }
 
 
+function MiDexStack() {
+  return (
+    <MiDexStackNavigator.Navigator>
+
+      <MiDexStackNavigator.Screen
+        name="MiDexInicio"
+        component={MiDex}
+        options={{ title: 'Mi DEX' }}
+      />
+
+
+      <MiDexStackNavigator.Screen
+        name="FichaEspecie"
+        component={FichaEspecie}
+        options={{ title: 'Ficha' }}
+      />
+
+    </MiDexStackNavigator.Navigator>
+  );
+}
+
+
 export default function AppNavigator() {
   return (
     <Tab.Navigator id="RootTabs">
@@ -102,7 +125,7 @@ export default function AppNavigator() {
 
       <Tab.Screen
         name="Mi DEX"
-        component={MiDex}
+        component={MiDexStack}
         options={{
           tabBarLabel: 'Mi DEX',
         }}
