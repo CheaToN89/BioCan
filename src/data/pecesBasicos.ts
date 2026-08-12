@@ -34,8 +34,9 @@ export const pecesBasicos: Especie[] = [
     profundidad: "0 - 50 metros",
 
     curiosidades: [
-      "Raspa algas de las rocas con sus dientes fusionados.",
-      "Ayuda a crear arena marina."
+      "Ayuda a crear arena marina al triturar algas y roca con sus mandíbulas.",
+      "Nace hembra y puede transformarse en macho al crecer.",
+      "Es uno de los herbívoros más importantes en los fondos rocosos de Canarias.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -75,7 +76,9 @@ export const pecesBasicos: Especie[] = [
     profundidad: "0 - 30 metros",
 
     curiosidades: [
-      "Forma grandes bancos de peces."
+      "Se alimenta sobre todo de algas y restos vegetales del fondo.",
+      "Sus rayas longitudinales le ayudan a confundirse dentro del banco.",
+      "Si se consume, puede provocar alucinaciones; no es un pez comestible seguro.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -115,7 +118,9 @@ export const pecesBasicos: Especie[] = [
     profundidad: "0 - 50 metros",
 
     curiosidades: [
-      "Es frecuente verlo haciendo snorkel."
+      "De joven muestra franjas verticales que van desapareciendo con la edad.",
+      "Rasca algas e invertebrados de las rocas con sus dientes incisivos.",
+      "En primavera forma parejas para reproducirse cerca del fondo rocoso.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -155,7 +160,9 @@ export const pecesBasicos: Especie[] = [
     profundidad: "0 - 20 metros",
 
     curiosidades: [
-      "Uno de los peces más fáciles de observar."
+      "Los machos adultos son mucho más coloridos que las hembras y los jóvenes.",
+      "Nace hembra y puede convertirse en macho al alcanzar cierto tamaño.",
+      "Caza activamente crustáceos y gusanos en las grietas de las rocas.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -197,7 +204,9 @@ export const pecesBasicos: Especie[] = [
     profundidad: "0 - 100 metros",
 
     curiosidades: [
-      "Pasa gran parte del día escondida."
+      "Es endémica de Macaronesia; en Canarias es la morena autóctona más conocida.",
+      "Abre y cierra la boca de forma continua para hacer circular el agua y respirar.",
+      "Sale de noche a cazar peces, cefalópodos y crustáceos cerca de su guarida.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"

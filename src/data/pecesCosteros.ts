@@ -36,8 +36,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "0 - 100 metros",
 
     curiosidades: [
-      "Forma grandes bancos.",
-      "Es frecuente verla cerca de la costa."
+      "Sus ojos grandes le ayudan a detectar plancton y pequeñas presas en aguas claras.",
+      "Se alimenta de plancton, invertebrados y algas en suspensión.",
+      "Forma parte de la base alimenticia de depredadores costeros como la bicuda.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -80,7 +81,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "0 - 100 metros",
 
     curiosidades: [
-      "Puede inflarse como defensa."
+      "Contiene tetrodotoxina, una de las neurotoxinas más potentes del reino animal.",
+      "Usa sus dientes fusionados como un pico para romper conchas y erizos.",
+      "Es uno de los pocos peces globo habituales en las costas de Canarias.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -123,7 +126,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "5 - 150 metros",
 
     curiosidades: [
-      "Cambia de color durante su crecimiento."
+      "Los juveniles son gris claro con manchas; los adultos se vuelven casi negros.",
+      "Se alimenta de invertebrados, gusanos y pequeños peces en el fondo.",
+      "En época reproductiva puede formar parejas temporales sobre roca y arena.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -164,8 +169,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "0 - 100 metros",
 
     curiosidades: [
-      "Es una cazadora rápida.",
-      "Puede verse formando grupos."
+      "Ataca a sus presas con aceleraciones bruscas en pocos metros.",
+      "Los jóvenes suelen moverse en grupos; los adultos son más solitarios.",
+      "En Canarias patrulla aguas abiertas y túneles rocosos en busca de peces pequeños.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -208,7 +214,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "0 - 100 metros",
 
     curiosidades: [
-      "Tiene un patrón de manchas característico."
+      "Puede alcanzar gran tamaño y vivir muchos años en la misma cueva.",
+      "Espera inmóvil en su guarida y sale de golpe para atrapar presas que pasan cerca.",
+      "Aunque no busca atacar al ser humano, conviene no introducir las manos en grietas donde pueda estar refugiada.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -250,7 +258,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "5 - 200 metros",
 
     curiosidades: [
-      "Es un depredador que espera escondido a sus presas."
+      "Es hermafrodita simultáneo: puede actuar como hembra y como macho.",
+      "Emite sonidos que otros serránidos pueden detectar en el fondo rocoso.",
+      "Acecha desde las grietas y captura crustáceos y peces pequeños de un salto.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -293,8 +303,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "5 - 300 metros",
 
     curiosidades: [
-      "Puede vivir varias décadas.",
-      "Es uno de los grandes depredadores costeros."
+      "Nace hembra y puede transformarse en macho cuando alcanza gran tamaño.",
+      "Durante la época reproductiva puede reunirse con otros ejemplares en zonas concretas del fondo.",
+      "En Canarias fue históricamente muy pescado; hoy es clave en reservas marinas.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
@@ -337,7 +348,9 @@ export const pecesCosteros: Especie[] = [
     profundidad: "10 - 200 metros",
 
     curiosidades: [
-      "Es una especie muy apreciada en Canarias."
+      "Es endémico de Macaronesia; Canarias es uno de sus principales enclaves.",
+      "Nace hembra y puede convertirse en macho al madurar.",
+      "Los machos dominantes defienden un territorio con cuevas en el fondo rocoso.",
     ],
 
     wikipedia: "https://es.wikipedia.org/"
