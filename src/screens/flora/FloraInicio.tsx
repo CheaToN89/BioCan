@@ -1,15 +1,9 @@
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type FloraNavigationProp = NativeStackNavigationProp<{
-  Arboles: undefined;
-  Arbustos: undefined;
-  Plantas: undefined;
-  Flores: undefined;
-  Marina: undefined;
-  Hongos: undefined;
-  Liquenes: undefined;
-}>;
+import { InicioStackParamList } from '../../navigation/types';
+
+type FloraNavigationProp = NativeStackNavigationProp<InicioStackParamList, 'Flora'>;
 
 type Props = {
   navigation: FloraNavigationProp;
@@ -31,7 +25,14 @@ export default function FloraInicio({ navigation }: Props) {
       <View style={styles.buttonsContainer}>
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Arboles')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Árboles',
+              titulo: 'Árboles',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🌳</Text>
           <Text style={styles.buttonText}>Árboles</Text>
@@ -39,7 +40,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Arbustos')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Arbustos',
+              titulo: 'Arbustos',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🌿</Text>
           <Text style={styles.buttonText}>Arbustos</Text>
@@ -47,7 +55,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Plantas')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Plantas',
+              titulo: 'Plantas',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🌱</Text>
           <Text style={styles.buttonText}>Plantas</Text>
@@ -55,7 +70,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Flores')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Flores',
+              titulo: 'Flores',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🌸</Text>
           <Text style={styles.buttonText}>Flores</Text>
@@ -63,7 +85,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Marina')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora marina',
+              subgrupo: 'Algas',
+              titulo: 'Flora marina',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🌊</Text>
           <Text style={styles.buttonText}>Flora marina</Text>
@@ -71,7 +100,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Hongos')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Hongos',
+              titulo: 'Hongos',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🍄</Text>
           <Text style={styles.buttonText}>Hongos</Text>
@@ -79,7 +115,14 @@ export default function FloraInicio({ navigation }: Props) {
 
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Liquenes')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Flora',
+              grupo: 'Flora terrestre',
+              subgrupo: 'Líquenes',
+              titulo: 'Líquenes',
+            })
+          }
         >
           <Text style={styles.buttonIcon}>🪨</Text>
           <Text style={styles.buttonText}>Líquenes</Text>

@@ -22,12 +22,5 @@ export type InicioStackParamList = {
   Terrestres: undefined;
   Aves: undefined;
   Flora: undefined;
-  Arboles: undefined;
-  Arbustos: undefined;
-  Plantas: undefined;
-  Flores: undefined;
-  Marina: undefined;
-  Hongos: undefined;
-  Liquenes: undefined;
   EspeciesLista: EspeciesListaParams;
 };
