@@ -13,12 +13,6 @@ const FRECUENCIA_LABELS: Record<FrecuenciaCanarias, string> = {
   raro: 'Raro',
 };
 
-const FRECUENCIA_COLOR: Record<FrecuenciaCanarias, string> = {
-  comun: '#4a7c59',
-  escaso: '#b8860b',
-  raro: '#b85454',
-};
-
 const SUBGRUPO_EMOJI: Record<Subgrupo, string> = {
   Peces: '🐠',
   Tiburones: '🦈',
@@ -260,18 +254,9 @@ export default function FichaEspecie() {
                   FRECUENCIA DE AVISTAMIENTO
                 </Text>
 
-                <View style={styles.valorConIndicador}>
-                  <View
-                    style={[
-                      styles.frecuenciaIndicador,
-                      { backgroundColor: FRECUENCIA_COLOR[especie.frecuenciaCanarias] },
-                    ]}
-                  />
-
-                  <Text style={[styles.valorCard, styles.valorCardInline]}>
-                    {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
-                  </Text>
-                </View>
+                <Text style={styles.valorCard}>
+                  {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
+                </Text>
               </View>
             )}
           </View>
@@ -535,23 +520,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginTop: 8,
     textAlign: 'center',
-  },
-
-  valorCardInline: {
-    marginTop: 0,
-  },
-
-  valorConIndicador: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    gap: 8,
-  },
-
-  frecuenciaIndicador: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
   },
 
   alimentacion: {
