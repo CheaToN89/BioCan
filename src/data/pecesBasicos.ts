@@ -11,6 +11,10 @@ export const pecesBasicos: Especie[] = [
 
     categoria: "Fauna",
     grupo: "Marinos",
+    subgrupo: "Peces",
+
+    descripcion:
+      "Pez loro herbívoro de fondos rocosos del Atlántico oriental y Macaronesia. Raspa algas con sus mandíbulas fusionadas y es muy habitual en arrecifes poco profundos de Canarias.",
 
     imagen: "",
 
@@ -48,6 +52,10 @@ export const pecesBasicos: Especie[] = [
 
     categoria: "Fauna",
     grupo: "Marinos",
+    subgrupo: "Peces",
+
+    descripcion:
+      "Pez costero del Atlántico oriental y Mediterráneo que forma grandes bancos. Se alimenta principalmente de algas y pequeños invertebrados en praderas marinas y fondos rocosos.",
 
     imagen: "",
 
@@ -84,6 +92,10 @@ export const pecesBasicos: Especie[] = [
 
     categoria: "Fauna",
     grupo: "Marinos",
+    subgrupo: "Peces",
+
+    descripcion:
+      "Espárido costero muy común en el Atlántico oriental y Mediterráneo. Habita fondos rocosos poco profundos y tiene dieta omnívora, alimentándose de algas, invertebrados y pequeños peces.",
 
     imagen: "",
 
@@ -120,6 +132,10 @@ export const pecesBasicos: Especie[] = [
 
     categoria: "Fauna",
     grupo: "Marinos",
+    subgrupo: "Peces",
+
+    descripcion:
+      "Lábrido multicolor de aguas poco profundas del Atlántico oriental y Mediterráneo. Los adultos son carnívoros activos y muy visibles sobre fondos rocosos costeros.",
 
     imagen: "",
 
@@ -156,6 +172,10 @@ export const pecesBasicos: Especie[] = [
 
     categoria: "Fauna",
     grupo: "Marinos",
+    subgrupo: "Peces",
+
+    descripcion:
+      "Morena endémica de Macaronesia, presente en Canarias y otras islas del Atlántico oriental. De hábitos nocturnos, vive escondida en cuevas y grietas rocosas y es carnívora.",
 
     imagen: "",
 
