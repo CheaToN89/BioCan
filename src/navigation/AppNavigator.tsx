@@ -8,7 +8,6 @@ import Explorar from '../screens/Explorar';
 
 import FaunaInicio from '../screens/fauna/FaunaInicio';
 import Marinos from '../screens/fauna/Marinos';
-import Peces from '../screens/fauna/Peces';
 import Terrestres from '../screens/fauna/Terrestres';
 import Aves from '../screens/fauna/Aves';
 
@@ -23,10 +22,11 @@ import Liquenes from '../screens/flora/Liquenes';
 
 import EspeciesLista from '../screens/species/EspeciesLista';
 import FichaEspecie from '../screens/species/FichaEspecie';
+import { InicioStackParamList } from './types';
 
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<InicioStackParamList>();
 
 
 function InicioStack() {
@@ -58,13 +58,6 @@ function InicioStack() {
         name="Marinos"
         component={Marinos}
         options={{ title: 'Marinos' }}
-      />
-
-
-      <Stack.Screen
-        name="Peces"
-        component={Peces}
-        options={{ title: 'Peces' }}
       />
 
 
@@ -148,7 +141,9 @@ function InicioStack() {
       <Stack.Screen
         name="EspeciesLista"
         component={EspeciesLista}
-        options={{ title: 'Especies' }}
+        options={({ route }) => ({
+          title: route.params.titulo,
+        })}
       />
 
     </Stack.Navigator>

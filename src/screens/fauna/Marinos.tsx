@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { InicioStackParamList } from '../../navigation/types';
 
-type MarinosNavigationProp = NativeStackNavigationProp<any>;
+type MarinosNavigationProp = NativeStackNavigationProp<InicioStackParamList, 'Marinos'>;
 
 type Props = {
   navigation: MarinosNavigationProp;
@@ -29,7 +30,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.peces]}
-          onPress={() => navigation.navigate('Peces')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Peces',
+              titulo: 'Peces',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🐠

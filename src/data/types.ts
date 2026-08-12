@@ -18,6 +18,7 @@ export type Subgrupo =
   | "Mamíferos"
   | "Reptiles"
   | "Insectos"
+  | "Aves"
   | "Árboles"
   | "Arbustos"
   | "Plantas"
