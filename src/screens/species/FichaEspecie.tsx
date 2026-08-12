@@ -8,17 +8,45 @@ import { InicioStackParamList } from '../../navigation/types';
 export default function FichaEspecie() {
   const route = useRoute<RouteProp<InicioStackParamList, 'FichaEspecie'>>();
   const { id } = route.params;
-  const { registrarAvistamiento, isDescubierta } = useAvistamientos();
+  const {
+    registrarAvistamiento,
+    quitarEspecieDelDex,
+    isDescubierta,
+    isLoading,
+  } = useAvistamientos();
   const especie = getEspecieById(id);
+  const descubierta = isDescubierta(id);
 
-  const handleRegistrarAvistamiento = async () => {
-    const yaDescubierta = isDescubierta(id);
+  const handleDexPress = () => {
+    if (isLoading) {
+      return;
+    }
 
-    await registrarAvistamiento({ especieId: id });
+    if (descubierta) {
+      Alert.alert(
+        '¿Quieres quitar esta especie de Mi DEX?',
+        undefined,
+        [
+          { text: 'Cancelar', style: 'cancel' },
+          {
+            text: 'Quitar',
+            style: 'destructive',
+            onPress: () => {
+              void quitarEspecieDelDex(id);
+            },
+          },
+        ],
+      );
+      return;
+    }
 
-    Alert.alert(
-      yaDescubierta ? 'Avistamiento registrado' : '¡Nueva especie descubierta!',
-    );
+    void (async () => {
+      const resultado = await registrarAvistamiento({ especieId: id });
+
+      if (!resultado.yaRegistrada) {
+        Alert.alert('Especie añadida a Mi DEX');
+      }
+    })();
   };
 
   if (!especie) {
@@ -276,9 +304,16 @@ export default function FichaEspecie() {
           </Text>
         </Pressable>
 
-        <Pressable style={styles.botonSecundario} onPress={handleRegistrarAvistamiento}>
+        <Pressable
+          style={[
+            styles.botonSecundario,
+            isLoading && styles.botonDeshabilitado,
+          ]}
+          disabled={isLoading}
+          onPress={handleDexPress}
+        >
           <Text style={styles.botonTexto}>
-            Registrar avistamiento
+            {descubierta ? '✓ En Mi DEX' : '+ Añadir a Mi DEX'}
           </Text>
         </Pressable>
       </View>
@@ -420,6 +455,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: '#dcefd8',
     alignItems: 'center',
+  },
+
+  botonDeshabilitado: {
+    opacity: 0.5,
   },
 
   botonTexto: {

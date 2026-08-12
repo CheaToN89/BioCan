@@ -21,9 +21,16 @@ type RegistrarAvistamientoInput = {
 };
 
 
+export type ResultadoRegistro = {
+  yaRegistrada: boolean;
+};
+
+
 type AvistamientosContextValue = {
   avistamientos: Avistamiento[];
-  registrarAvistamiento: (input: RegistrarAvistamientoInput) => Promise<void>;
+  isLoading: boolean;
+  registrarAvistamiento: (input: RegistrarAvistamientoInput) => Promise<ResultadoRegistro>;
+  quitarEspecieDelDex: (especieId: string) => Promise<void>;
   isDescubierta: (especieId: string) => boolean;
   getAvistamientosPorEspecie: (especieId: string) => Avistamiento[];
 };
@@ -48,34 +55,61 @@ export function AvistamientosProvider({
   children: React.ReactNode;
 }) {
   const [avistamientos, setAvistamientos] = useState<Avistamiento[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
-    loadAvistamientos().then(setAvistamientos);
+    loadAvistamientos()
+      .then(setAvistamientos)
+      .finally(() => setIsLoading(false));
   }, []);
 
 
   const registrarAvistamiento = useCallback(
-    async ({ especieId, fecha, notas }: RegistrarAvistamientoInput) => {
-      const nuevo: Avistamiento = {
-        id: crearId(),
-        especieId,
-        fecha: fecha ?? fechaHoy(),
-        notas,
-        createdAt: new Date().toISOString(),
-      };
-
+    async ({ especieId, fecha, notas }: RegistrarAvistamientoInput): Promise<ResultadoRegistro> => {
+      let yaRegistrada = false;
       let actualizados: Avistamiento[] = [];
 
       setAvistamientos((prev) => {
+        if (prev.some((avistamiento) => avistamiento.especieId === especieId)) {
+          yaRegistrada = true;
+          return prev;
+        }
+
+        const nuevo: Avistamiento = {
+          id: crearId(),
+          especieId,
+          fecha: fecha ?? fechaHoy(),
+          notas,
+          createdAt: new Date().toISOString(),
+        };
+
         actualizados = [...prev, nuevo];
         return actualizados;
       });
 
+      if (yaRegistrada) {
+        return { yaRegistrada: true };
+      }
+
       await saveAvistamientos(actualizados);
+
+      return { yaRegistrada: false };
     },
     [],
   );
+
+
+  const quitarEspecieDelDex = useCallback(async (especieId: string) => {
+    let actualizados: Avistamiento[] = [];
+
+    setAvistamientos((prev) => {
+      actualizados = prev.filter((avistamiento) => avistamiento.especieId !== especieId);
+      return actualizados;
+    });
+
+    await saveAvistamientos(actualizados);
+  }, []);
 
 
   const isDescubierta = useCallback(
@@ -95,13 +129,17 @@ export function AvistamientosProvider({
   const value = useMemo(
     () => ({
       avistamientos,
+      isLoading,
       registrarAvistamiento,
+      quitarEspecieDelDex,
       isDescubierta,
       getAvistamientosPorEspecie,
     }),
     [
       avistamientos,
+      isLoading,
       registrarAvistamiento,
+      quitarEspecieDelDex,
       isDescubierta,
       getAvistamientosPorEspecie,
     ],
