@@ -13,13 +13,25 @@ export type EspeciesListaParams = {
   titulo: string;
 };
 
+export type FichaEspecieOrigen = 'explorar' | 'dex';
+
+export type FichaEspecieParams = {
+  id: string;
+  origen: FichaEspecieOrigen;
+};
+
 export type InicioStackParamList = {
   InicioPrincipal: undefined;
   Explorar: undefined;
   Fauna: undefined;
   Marinos: undefined;
-  FichaEspecie: { id: string };
+  FichaEspecie: FichaEspecieParams;
   Terrestres: undefined;
   Flora: undefined;
   EspeciesLista: EspeciesListaParams;
+};
+
+export type MiDexStackParamList = {
+  MiDexInicio: undefined;
+  FichaEspecie: FichaEspecieParams;
 };

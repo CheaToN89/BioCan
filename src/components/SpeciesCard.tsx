@@ -8,20 +8,23 @@ import {
 } from 'react-native';
 
 import { Especie } from '../data/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { InicioStackParamList } from '../navigation/types';
+import { FichaEspecieOrigen, FichaEspecieParams } from '../navigation/types';
 
 
 type Props = {
   especie: Especie;
   avistada?: boolean;
-  navigation: NativeStackNavigationProp<InicioStackParamList>;
+  origen: FichaEspecieOrigen;
+  navigation: {
+    navigate: (screen: 'FichaEspecie', params: FichaEspecieParams) => void;
+  };
 };
 
 
 export default function SpeciesCard({
   especie,
   avistada = false,
+  origen,
   navigation,
 }: Props) {
 
@@ -31,6 +34,7 @@ export default function SpeciesCard({
       onPress={() =>
         navigation.navigate('FichaEspecie', {
           id: especie.id,
+          origen,
         })
       }
     >

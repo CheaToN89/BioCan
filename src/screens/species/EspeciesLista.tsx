@@ -3,6 +3,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { getEspecies } from '../../data';
+import { useAvistamientos } from '../../context/AvistamientosContext';
 import { InicioStackParamList } from '../../navigation/types';
 import SpeciesCard from '../../components/SpeciesCard';
 
@@ -15,6 +16,8 @@ type Props = {
 export default function EspeciesLista({ navigation }: Props) {
   const route = useRoute<RouteProp<InicioStackParamList, 'EspeciesLista'>>();
   const { categoria, grupo, subgrupo } = route.params;
+
+  const { isDescubierta } = useAvistamientos();
 
   const especiesFiltradas = getEspecies({ categoria, grupo, subgrupo });
 
@@ -43,6 +46,8 @@ export default function EspeciesLista({ navigation }: Props) {
         renderItem={({ item }) => (
           <SpeciesCard
             especie={item}
+            avistada={isDescubierta(item.id)}
+            origen="explorar"
             navigation={navigation}
           />
         )}

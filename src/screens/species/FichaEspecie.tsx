@@ -3,11 +3,13 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { useAvistamientos } from '../../context/AvistamientosContext';
 import { getEspecieById } from '../../data';
-import { InicioStackParamList } from '../../navigation/types';
+import { InicioStackParamList, MiDexStackParamList } from '../../navigation/types';
 
 export default function FichaEspecie() {
-  const route = useRoute<RouteProp<InicioStackParamList, 'FichaEspecie'>>();
-  const { id } = route.params;
+  const route = useRoute<
+    RouteProp<InicioStackParamList | MiDexStackParamList, 'FichaEspecie'>
+  >();
+  const { id, origen } = route.params;
   const {
     registrarAvistamiento,
     quitarEspecieDelDex,
@@ -304,18 +306,20 @@ export default function FichaEspecie() {
           </Text>
         </Pressable>
 
-        <Pressable
-          style={[
-            styles.botonSecundario,
-            isLoading && styles.botonDeshabilitado,
-          ]}
-          disabled={isLoading}
-          onPress={handleDexPress}
-        >
-          <Text style={styles.botonTexto}>
-            {descubierta ? '✓ En Mi DEX' : '+ Añadir a Mi DEX'}
-          </Text>
-        </Pressable>
+        {origen === 'explorar' && (
+          <Pressable
+            style={[
+              styles.botonSecundario,
+              isLoading && styles.botonDeshabilitado,
+            ]}
+            disabled={isLoading}
+            onPress={handleDexPress}
+          >
+            <Text style={styles.botonTexto}>
+              {descubierta ? '✓ En Mi DEX' : '+ Añadir a Mi DEX'}
+            </Text>
+          </Pressable>
+        )}
       </View>
     </ScrollView>
   );
