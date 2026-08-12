@@ -1,10 +1,10 @@
-import { Alert, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
+import { Alert, Image, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useAvistamientos } from '../../context/AvistamientosContext';
 import { getEspecieById } from '../../data';
-import { FrecuenciaCanarias } from '../../data/types';
+import { FrecuenciaCanarias, Subgrupo } from '../../data/types';
 import { InicioStackParamList, MiDexStackParamList } from '../../navigation/types';
 
 const FRECUENCIA_LABELS: Record<FrecuenciaCanarias, string> = {
@@ -12,6 +12,37 @@ const FRECUENCIA_LABELS: Record<FrecuenciaCanarias, string> = {
   escaso: 'Escaso',
   raro: 'Raro',
 };
+
+const FRECUENCIA_COLOR: Record<FrecuenciaCanarias, string> = {
+  comun: '#4a7c59',
+  escaso: '#b8860b',
+  raro: '#b85454',
+};
+
+const SUBGRUPO_EMOJI: Record<Subgrupo, string> = {
+  Peces: '🐠',
+  Tiburones: '🦈',
+  Cetáceos: '🐋',
+  Tortugas: '🐢',
+  Cefalópodos: '🦑',
+  Invertebrados: '🦐',
+  Anfibios: '🐸',
+  Mamíferos: '🐾',
+  Reptiles: '🦎',
+  Insectos: '🦋',
+  Aves: '🐦',
+  Árboles: '🌳',
+  Arbustos: '🌿',
+  Plantas: '🌱',
+  Flores: '🌸',
+  Hongos: '🍄',
+  Líquenes: '🪨',
+  Algas: '🌊',
+};
+
+function obtenerEmojiSubgrupo(subgrupo: Subgrupo): string {
+  return SUBGRUPO_EMOJI[subgrupo] ?? '🐾';
+}
 
 function esEnlaceWikipediaValido(url?: string): boolean {
   if (!url) {
@@ -124,9 +155,16 @@ export default function FichaEspecie() {
     <ScrollView style={styles.container}>
       <View style={styles.carta}>
         <View style={styles.imagen}>
-          <Text style={styles.imagenTexto}>
-            🐟
-          </Text>
+          {especie.imagen ? (
+            <Image
+              source={{ uri: especie.imagen }}
+              style={styles.imagenFoto}
+            />
+          ) : (
+            <Text style={styles.imagenTexto}>
+              {obtenerEmojiSubgrupo(especie.subgrupo)}
+            </Text>
+          )}
         </View>
 
         <Text style={styles.nombre}>
@@ -136,6 +174,12 @@ export default function FichaEspecie() {
         <Text style={styles.cientifico}>
           {especie.nombreCientifico}
         </Text>
+
+        {especie.nombresAlternativos.length > 0 && (
+          <Text style={styles.nombresAlternativos}>
+            También: {especie.nombresAlternativos.join(', ')}
+          </Text>
+        )}
 
         <Text style={styles.descripcion}>
           {especie.descripcion}
@@ -159,7 +203,7 @@ export default function FichaEspecie() {
         {tieneInfoCards && (
           <View style={styles.infoGrid}>
             {especie.alimentacion && (
-              <View style={[styles.infoCard, styles.alimentacion]}>
+              <View style={[styles.infoCard, styles.infoCardElevada, styles.alimentacion]}>
                 <Text style={styles.icono}>
                   🍃
                 </Text>
@@ -175,12 +219,12 @@ export default function FichaEspecie() {
             )}
 
             {especie.interaccion && (
-              <View style={[styles.infoCard, styles.interaccion]}>
+              <View style={[styles.infoCard, styles.infoCardElevada, styles.interaccion]}>
                 <Text style={styles.icono}>
                   🛡
                 </Text>
 
-                <Text style={styles.tituloCard}>
+                <Text style={[styles.tituloCard, styles.tituloCardCompacto]}>
                   INTERACCIÓN CON EL SER HUMANO
                 </Text>
 
@@ -191,7 +235,7 @@ export default function FichaEspecie() {
             )}
 
             {especie.conservacion && (
-              <View style={[styles.infoCard, styles.conservacion]}>
+              <View style={[styles.infoCard, styles.infoCardElevada, styles.conservacion]}>
                 <Text style={styles.icono}>
                   🌱
                 </Text>
@@ -207,7 +251,7 @@ export default function FichaEspecie() {
             )}
 
             {especie.frecuenciaCanarias && (
-              <View style={[styles.infoCard, styles.frecuenciaCanarias]}>
+              <View style={[styles.infoCard, styles.infoCardElevada, styles.frecuenciaCanarias]}>
                 <Text style={styles.icono}>
                   👁
                 </Text>
@@ -216,9 +260,18 @@ export default function FichaEspecie() {
                   FRECUENCIA DE AVISTAMIENTO
                 </Text>
 
-                <Text style={styles.valorCard}>
-                  {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
-                </Text>
+                <View style={styles.valorConIndicador}>
+                  <View
+                    style={[
+                      styles.frecuenciaIndicador,
+                      { backgroundColor: FRECUENCIA_COLOR[especie.frecuenciaCanarias] },
+                    ]}
+                  />
+
+                  <Text style={[styles.valorCard, styles.valorCardInline]}>
+                    {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
+                  </Text>
+                </View>
               </View>
             )}
           </View>
@@ -396,6 +449,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#d9edf7',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
+  },
+
+  imagenFoto: {
+    width: '100%',
+    height: '100%',
   },
 
   imagenTexto: {
@@ -412,6 +471,13 @@ const styles = StyleSheet.create({
   cientifico: {
     fontSize: 18,
     fontStyle: 'italic',
+    textAlign: 'center',
+  },
+
+  nombresAlternativos: {
+    marginTop: 6,
+    fontSize: 14,
+    color: '#777777',
     textAlign: 'center',
   },
 
@@ -440,6 +506,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  infoCardElevada: {
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+
   icono: {
     fontSize: 32,
   },
@@ -451,10 +525,33 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
+  tituloCardCompacto: {
+    fontSize: 11,
+    lineHeight: 14,
+  },
+
   valorCard: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: '600',
     marginTop: 8,
     textAlign: 'center',
+  },
+
+  valorCardInline: {
+    marginTop: 0,
+  },
+
+  valorConIndicador: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+    gap: 8,
+  },
+
+  frecuenciaIndicador: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
   },
 
   alimentacion: {
@@ -492,8 +589,9 @@ const styles = StyleSheet.create({
   },
 
   curiosidad: {
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 15,
+    lineHeight: 22,
+    marginBottom: 6,
   },
 
   boton: {
