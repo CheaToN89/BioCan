@@ -1,13 +1,25 @@
-import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
+import { Alert, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
+import { useAvistamientos } from '../../context/AvistamientosContext';
 import { getEspecieById } from '../../data';
 import { InicioStackParamList } from '../../navigation/types';
 
 export default function FichaEspecie() {
   const route = useRoute<RouteProp<InicioStackParamList, 'FichaEspecie'>>();
   const { id } = route.params;
+  const { registrarAvistamiento, isDescubierta } = useAvistamientos();
   const especie = getEspecieById(id);
+
+  const handleRegistrarAvistamiento = async () => {
+    const yaDescubierta = isDescubierta(id);
+
+    await registrarAvistamiento({ especieId: id });
+
+    Alert.alert(
+      yaDescubierta ? 'Avistamiento registrado' : '¡Nueva especie descubierta!',
+    );
+  };
 
   if (!especie) {
     return (
@@ -264,7 +276,7 @@ export default function FichaEspecie() {
           </Text>
         </Pressable>
 
-        <Pressable style={styles.botonSecundario}>
+        <Pressable style={styles.botonSecundario} onPress={handleRegistrarAvistamiento}>
           <Text style={styles.botonTexto}>
             Registrar avistamiento
           </Text>
