@@ -102,6 +102,21 @@ export default function FichaEspecie() {
           {especie.descripcion}
         </Text>
 
+        {origen === 'explorar' && (
+          <Pressable
+            style={[
+              styles.botonSecundario,
+              isLoading && styles.botonDeshabilitado,
+            ]}
+            disabled={isLoading}
+            onPress={handleDexPress}
+          >
+            <Text style={styles.botonTexto}>
+              {descubierta ? '✓ En Mi DEX' : '+ Añadir a Mi DEX'}
+            </Text>
+          </Pressable>
+        )}
+
         {tieneInfoCards && (
           <View style={styles.infoGrid}>
             {especie.alimentacion && (
@@ -312,21 +327,6 @@ export default function FichaEspecie() {
             Ver en Wikipedia
           </Text>
         </Pressable>
-
-        {origen === 'explorar' && (
-          <Pressable
-            style={[
-              styles.botonSecundario,
-              isLoading && styles.botonDeshabilitado,
-            ]}
-            disabled={isLoading}
-            onPress={handleDexPress}
-          >
-            <Text style={styles.botonTexto}>
-              {descubierta ? '✓ En Mi DEX' : '+ Añadir a Mi DEX'}
-            </Text>
-          </Pressable>
-        )}
       </View>
     </ScrollView>
   );
