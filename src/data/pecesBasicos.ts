@@ -22,7 +22,7 @@ export const pecesBasicos: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "comun",
 
     longitud: "Hasta 50 cm",
     peso: "Hasta 2 kg",
@@ -63,7 +63,7 @@ export const pecesBasicos: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Fácil",
+    frecuenciaCanarias: "comun",
 
     longitud: "Hasta 50 cm",
     peso: "Hasta 2 kg",
@@ -103,7 +103,7 @@ export const pecesBasicos: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "comun",
 
     longitud: "Hasta 45 cm",
     peso: "Hasta 2 kg",
@@ -143,7 +143,7 @@ export const pecesBasicos: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Fácil",
+    frecuenciaCanarias: "comun",
 
     longitud: "Hasta 25 cm",
     peso: "Hasta 300 g",
@@ -183,7 +183,9 @@ export const pecesBasicos: Especie[] = [
     interaccion: "Precaución",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
+    notaFrecuencia:
+      "Activa sobre todo de noche; suele estar oculta en grietas.",
 
     longitud: "Hasta 130 cm",
     peso: "Hasta 5 kg",

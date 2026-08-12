@@ -3,7 +3,14 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { useAvistamientos } from '../../context/AvistamientosContext';
 import { getEspecieById } from '../../data';
+import { FrecuenciaCanarias } from '../../data/types';
 import { InicioStackParamList, MiDexStackParamList } from '../../navigation/types';
+
+const FRECUENCIA_LABELS: Record<FrecuenciaCanarias, string> = {
+  comun: 'Común',
+  escaso: 'Escaso',
+  raro: 'Raro',
+};
 
 export default function FichaEspecie() {
   const route = useRoute<
@@ -71,7 +78,7 @@ export default function FichaEspecie() {
     especie.alimentacion ||
     especie.interaccion ||
     especie.conservacion ||
-    especie.observacion;
+    especie.frecuenciaCanarias;
 
 
   return (
@@ -145,19 +152,31 @@ export default function FichaEspecie() {
               </View>
             )}
 
-            {especie.observacion && (
-              <View style={[styles.infoCard, styles.observacion]}>
+            {especie.frecuenciaCanarias && (
+              <View
+                style={[
+                  styles.infoCard,
+                  styles.frecuenciaCanarias,
+                  especie.notaFrecuencia && styles.infoCardConNota,
+                ]}
+              >
                 <Text style={styles.icono}>
                   👁
                 </Text>
 
                 <Text style={styles.tituloCard}>
-                  OBSERVACIÓN
+                  FRECUENCIA EN CANARIAS
                 </Text>
 
                 <Text style={styles.valorCard}>
-                  {especie.observacion}
+                  {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
                 </Text>
+
+                {especie.notaFrecuencia && (
+                  <Text style={styles.notaFrecuenciaCard}>
+                    {especie.notaFrecuencia}
+                  </Text>
+                )}
               </View>
             )}
           </View>
@@ -418,8 +437,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#dcecf8',
   },
 
-  observacion: {
+  frecuenciaCanarias: {
     backgroundColor: '#eee6f7',
+  },
+
+  infoCardConNota: {
+    height: undefined,
+    minHeight: 140,
+  },
+
+  notaFrecuenciaCard: {
+    fontSize: 12,
+    marginTop: 6,
+    textAlign: 'center',
+    color: '#555555',
+    lineHeight: 16,
   },
 
   separador: {

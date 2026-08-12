@@ -27,6 +27,8 @@ export type Subgrupo =
   | "Líquenes"
   | "Algas";
 
+export type FrecuenciaCanarias = "comun" | "escaso" | "raro";
+
 export interface Especie {
   id: string;
 
@@ -49,7 +51,8 @@ export interface Especie {
   distribucion?: string;
   alimentacion?: string;
   interaccion?: string;
-  observacion?: string;
+  frecuenciaCanarias?: FrecuenciaCanarias;
+  notaFrecuencia?: string;
   vida?: string;
   longitud?: string;
   peso?: string;

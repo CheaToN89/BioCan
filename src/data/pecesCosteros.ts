@@ -24,7 +24,7 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Fácil",
+    frecuenciaCanarias: "comun",
 
     longitud: "Hasta 40 cm",
     peso: "Hasta 1 kg",
@@ -68,7 +68,7 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Precaución",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
 
     longitud: "Hasta 40 cm",
     peso: "Hasta 2 kg",
@@ -109,7 +109,9 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
+    notaFrecuencia:
+      "Frecuente en zonas más profundas que el snorkel habitual.",
 
     longitud: "Hasta 50 cm",
     peso: "Hasta 2 kg",
@@ -150,7 +152,7 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
 
     longitud: "Hasta 130 cm",
     peso: "Hasta 8 kg",
@@ -192,7 +194,9 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Precaución",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
+    notaFrecuencia:
+      "Observar dentro de cuevas y hendiduras rocosas.",
 
     longitud: "Hasta 150 cm",
     peso: "Hasta 15 kg",
@@ -233,7 +237,8 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Preocupación menor",
-    observacion: "Moderada",
+    frecuenciaCanarias: "escaso",
+    notaFrecuencia: "Pequeña y escondida entre rocas.",
 
     longitud: "Hasta 40 cm",
     peso: "Hasta 1 kg",
@@ -274,7 +279,9 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Vulnerable",
-    observacion: "Difícil",
+    frecuenciaCanarias: "raro",
+    notaFrecuencia:
+      "Avistamientos poco frecuentes incluso durante inmersiones.",
 
     longitud: "Hasta 150 cm",
     peso: "Hasta 60 kg",
@@ -316,7 +323,9 @@ export const pecesCosteros: Especie[] = [
     interaccion: "Inofensivo",
 
     conservacion: "Vulnerable",
-    observacion: "Difícil",
+    frecuenciaCanarias: "escaso",
+    notaFrecuencia:
+      "Más fácil de ver buceando que desde superficie.",
 
     longitud: "Hasta 90 cm",
     peso: "Hasta 8 kg",
