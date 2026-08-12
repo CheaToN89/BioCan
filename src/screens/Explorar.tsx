@@ -1,67 +1,61 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type InicioNavigationProp = NativeStackNavigationProp<any>;
+type ExplorarNavigationProp = NativeStackNavigationProp<any>;
 
 type Props = {
-  navigation: InicioNavigationProp;
+  navigation: ExplorarNavigationProp;
 };
 
-export default function Inicio({ navigation }: Props) {
+export default function Explorar({ navigation }: Props) {
   return (
     <View style={styles.container}>
 
       <Text style={styles.title}>
-        BioCan
+        Explorar
       </Text>
 
       <Text style={styles.subtitle}>
-        Biodiversidad de Canarias
+        Descubre la biodiversidad de Canarias
       </Text>
 
 
       <View style={styles.cardsContainer}>
 
         <Pressable
-          style={[styles.card, styles.explorar]}
-          onPress={() => navigation.navigate('Explorar')}
+          style={[styles.card, styles.fauna]}
+          onPress={() => navigation.navigate('Fauna')}
         >
           <Text style={styles.icon}>
             🐾
           </Text>
 
           <Text style={styles.cardTitle}>
-            Explorar
+            Fauna
+          </Text>
+
+          <Text style={styles.description}>
+            Animales de Canarias
           </Text>
         </Pressable>
 
 
         <Pressable
-          style={[styles.card, styles.dex]}
-          onPress={() => navigation.navigate('Mi DEX')}
+          style={[styles.card, styles.flora]}
+          onPress={() => navigation.navigate('Flora')}
         >
           <Text style={styles.icon}>
-            📖
+            🌿
           </Text>
 
           <Text style={styles.cardTitle}>
-            Mi DEX
+            Flora
+          </Text>
+
+          <Text style={styles.description}>
+            Plantas y hongos
           </Text>
         </Pressable>
-
-
-        <Pressable
-          style={[styles.card, styles.perfil]}
-        >
-          <Text style={styles.icon}>
-            👤
-          </Text>
-
-          <Text style={styles.cardTitle}>
-            Perfil
-          </Text>
-        </Pressable>
-
 
       </View>
 
@@ -82,21 +76,21 @@ const styles = StyleSheet.create({
 
 
   title: {
-    fontSize: 42,
+    fontSize: 36,
     fontWeight: 'bold',
     marginBottom: 10,
   },
 
 
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
     marginBottom: 40,
+    textAlign: 'center',
   },
 
 
   cardsContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'center',
     gap: 20,
   },
@@ -104,25 +98,21 @@ const styles = StyleSheet.create({
 
   card: {
     width: 150,
-    height: 150,
+    height: 160,
     borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
 
 
-  explorar: {
+  fauna: {
     backgroundColor: '#dcefd8',
   },
 
 
-  dex: {
-    backgroundColor: '#f3e4c1',
-  },
-
-
-  perfil: {
-    backgroundColor: '#dfe7f2',
+  flora: {
+    backgroundColor: '#d9ead3',
   },
 
 
@@ -133,8 +123,15 @@ const styles = StyleSheet.create({
 
 
   cardTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '600',
+  },
+
+
+  description: {
+    marginTop: 6,
+    fontSize: 12,
+    textAlign: 'center',
   },
 
 });

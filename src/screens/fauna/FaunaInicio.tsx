@@ -1,9 +1,19 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-export default function FaunaInicio() {
+type FaunaNavigationProp = NativeStackNavigationProp<any>;
+
+type Props = {
+  navigation: FaunaNavigationProp;
+};
+
+export default function FaunaInicio({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.icon}>🐾</Text>
+
+      <Text style={styles.icon}>
+        🐾
+      </Text>
 
       <Text style={styles.title}>
         Fauna de Canarias
@@ -13,27 +23,62 @@ export default function FaunaInicio() {
         Explora las especies animales de las islas
       </Text>
 
-      <View style={styles.buttonsContainer}>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonIcon}>🌊</Text>
-          <Text style={styles.buttonText}>Marinos</Text>
+
+      <View style={styles.cardsContainer}>
+
+
+        <Pressable
+          style={[styles.card, styles.marinos]}
+          onPress={() => navigation.navigate('Marinos')}
+        >
+          <Text style={styles.cardIcon}>
+            🌊
+          </Text>
+
+          <Text style={styles.cardTitle}>
+            Marinos
+          </Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonIcon}>🌍</Text>
-          <Text style={styles.buttonText}>Terrestres</Text>
+
+        <Pressable
+          style={[styles.card, styles.aves]}
+          onPress={() => navigation.navigate('Aves')}
+        >
+          <Text style={styles.cardIcon}>
+            🐦
+          </Text>
+
+          <Text style={styles.cardTitle}>
+            Aves
+          </Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonIcon}>🐦</Text>
-          <Text style={styles.buttonText}>Aves</Text>
+
+        <Pressable
+          style={[styles.card, styles.terrestres]}
+          onPress={() => navigation.navigate('Terrestres')}
+        >
+          <Text style={styles.cardIcon}
+          >
+            🌍
+          </Text>
+
+          <Text style={styles.cardTitle}>
+            Terrestres
+          </Text>
         </Pressable>
+
+
       </View>
+
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
@@ -42,10 +87,12 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
+
   icon: {
     fontSize: 55,
     marginBottom: 15,
   },
+
 
   title: {
     fontSize: 32,
@@ -53,33 +100,55 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+
   subtitle: {
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 40,
   },
 
-  buttonsContainer: {
-    gap: 15,
-    width: '100%',
+
+  cardsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 20,
   },
 
-  button: {
-    height: 80,
-    borderRadius: 18,
-    backgroundColor: '#eeeeee',
+
+  card: {
+    width: 150,
+    height: 150,
+    borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
   },
 
-  buttonIcon: {
-    fontSize: 30,
-    marginRight: 15,
+
+  marinos: {
+    backgroundColor: '#d9edf7',
   },
 
-  buttonText: {
-    fontSize: 22,
+
+  aves: {
+    backgroundColor: '#f7e9c8',
+  },
+
+
+  terrestres: {
+    backgroundColor: '#dcefd8',
+  },
+
+
+  cardIcon: {
+    fontSize: 45,
+    marginBottom: 12,
+  },
+
+
+  cardTitle: {
+    fontSize: 20,
     fontWeight: '600',
   },
+
 });
