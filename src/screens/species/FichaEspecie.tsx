@@ -2,148 +2,206 @@ import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 export default function FichaEspecie() {
-
   const route = useRoute<any>();
-
   const { especie } = route.params;
+
+  const tieneInfoCards =
+    especie.alimentacion ||
+    especie.interaccion ||
+    especie.conservacion ||
+    especie.observacion;
 
 
   return (
-
     <ScrollView style={styles.container}>
-
       <View style={styles.carta}>
-
-
         <View style={styles.imagen}>
           <Text style={styles.imagenTexto}>
             🐟
           </Text>
         </View>
 
-
-
         <Text style={styles.nombre}>
           {especie.nombreComun}
         </Text>
-
 
         <Text style={styles.cientifico}>
           {especie.nombreCientifico}
         </Text>
 
+        <Text style={styles.descripcion}>
+          {especie.descripcion}
+        </Text>
 
-        <View style={styles.sello}>
-          <Text style={styles.selloTexto}>
-            ✓ AVISTADO
-          </Text>
-        </View>
+        {tieneInfoCards && (
+          <View style={styles.infoGrid}>
+            {especie.alimentacion && (
+              <View style={[styles.infoCard, styles.alimentacion]}>
+                <Text style={styles.icono}>
+                  🍃
+                </Text>
 
+                <Text style={styles.tituloCard}>
+                  ALIMENTACIÓN
+                </Text>
 
+                <Text style={styles.valorCard}>
+                  {especie.alimentacion}
+                </Text>
+              </View>
+            )}
 
-        <View style={styles.infoGrid}>
+            {especie.interaccion && (
+              <View style={[styles.infoCard, styles.interaccion]}>
+                <Text style={styles.icono}>
+                  🛡
+                </Text>
 
+                <Text style={styles.tituloCard}>
+                  INTERACCIÓN
+                </Text>
 
-          <View style={[styles.infoCard, styles.alimentacion]}>
-            <Text style={styles.icono}>
-              🍃
-            </Text>
+                <Text style={styles.valorCard}>
+                  {especie.interaccion}
+                </Text>
+              </View>
+            )}
 
-            <Text style={styles.tituloCard}>
-              ALIMENTACIÓN
-            </Text>
+            {especie.conservacion && (
+              <View style={[styles.infoCard, styles.conservacion]}>
+                <Text style={styles.icono}>
+                  🌱
+                </Text>
 
-            <Text style={styles.valorCard}>
-              {especie.alimentacion}
-            </Text>
+                <Text style={styles.tituloCard}>
+                  CONSERVACIÓN
+                </Text>
+
+                <Text style={styles.valorCard}>
+                  {especie.conservacion}
+                </Text>
+              </View>
+            )}
+
+            {especie.observacion && (
+              <View style={[styles.infoCard, styles.observacion]}>
+                <Text style={styles.icono}>
+                  👁
+                </Text>
+
+                <Text style={styles.tituloCard}>
+                  OBSERVACIÓN
+                </Text>
+
+                <Text style={styles.valorCard}>
+                  {especie.observacion}
+                </Text>
+              </View>
+            )}
           </View>
-
-
-
-          <View style={[styles.infoCard, styles.interaccion]}>
-            <Text style={styles.icono}>
-              🛡
-            </Text>
-
-            <Text style={styles.tituloCard}>
-              INTERACCIÓN
-            </Text>
-
-            <Text style={styles.valorCard}>
-              {especie.interaccion}
-            </Text>
-          </View>
-
-
-
-          <View style={[styles.infoCard, styles.conservacion]}>
-            <Text style={styles.icono}>
-              🌱
-            </Text>
-
-            <Text style={styles.tituloCard}>
-              CONSERVACIÓN
-            </Text>
-
-            <Text style={styles.valorCard}>
-              {especie.conservacion}
-            </Text>
-          </View>
-
-
-
-          <View style={[styles.infoCard, styles.observacion]}>
-            <Text style={styles.icono}>
-              👁
-            </Text>
-
-            <Text style={styles.tituloCard}>
-              OBSERVACIÓN
-            </Text>
-
-            <Text style={styles.valorCard}>
-              {especie.observacion}
-            </Text>
-          </View>
-
-
-        </View>
-
-
+        )}
 
         <View style={styles.separador} />
-
-
 
         <Text style={styles.tituloSeccion}>
           📋 Datos destacados
         </Text>
 
+        {especie.longitud && (
+          <View style={styles.datoLinea}>
+            <Text>
+              📏 Longitud
+            </Text>
 
+            <Text>
+              {especie.longitud}
+            </Text>
+          </View>
+        )}
 
-        <View style={styles.datoLinea}>
-          <Text>
-            📏 Longitud
-          </Text>
+        {especie.peso && (
+          <View style={styles.datoLinea}>
+            <Text>
+              ⚖️ Peso
+            </Text>
 
-          <Text>
-            {especie.longitud}
-          </Text>
-        </View>
+            <Text>
+              {especie.peso}
+            </Text>
+          </View>
+        )}
 
+        {especie.profundidad && (
+          <View style={styles.datoLinea}>
+            <Text>
+              🌊 Profundidad
+            </Text>
 
+            <Text>
+              {especie.profundidad}
+            </Text>
+          </View>
+        )}
 
-        <View style={styles.datoLinea}>
-          <Text>
-            ⚖️ Peso
-          </Text>
+        {especie.altura && (
+          <View style={styles.datoLinea}>
+            <Text>
+              📐 Altura
+            </Text>
 
-          <Text>
-            {especie.peso}
-          </Text>
-        </View>
+            <Text>
+              {especie.altura}
+            </Text>
+          </View>
+        )}
 
+        {especie.altitud && (
+          <View style={styles.datoLinea}>
+            <Text>
+              ⛰ Altitud
+            </Text>
 
+            <Text>
+              {especie.altitud}
+            </Text>
+          </View>
+        )}
+
+        {especie.envergadura && (
+          <View style={styles.datoLinea}>
+            <Text>
+              🪽 Envergadura
+            </Text>
+
+            <Text>
+              {especie.envergadura}
+            </Text>
+          </View>
+        )}
+
+        {especie.floracion && (
+          <View style={styles.datoLinea}>
+            <Text>
+              🌸 Floración
+            </Text>
+
+            <Text>
+              {especie.floracion}
+            </Text>
+          </View>
+        )}
+
+        {especie.epocaObservacion && (
+          <View style={styles.datoLinea}>
+            <Text>
+              📅 Época de observación
+            </Text>
+
+            <Text>
+              {especie.epocaObservacion}
+            </Text>
+          </View>
+        )}
 
         <View style={styles.datoLinea}>
           <Text>
@@ -155,8 +213,6 @@ export default function FichaEspecie() {
           </Text>
         </View>
 
-
-
         <View style={styles.datoLinea}>
           <Text>
             ⏳ Vida
@@ -167,33 +223,20 @@ export default function FichaEspecie() {
           </Text>
         </View>
 
-
-
         <View style={styles.separador} />
-
-
 
         <Text style={styles.tituloSeccion}>
           ⭐ Curiosidades
         </Text>
 
-
-        {
-          especie.curiosidades.map(
-            (curiosidad: string, index: number) => (
-
-              <Text
-                key={index}
-                style={styles.curiosidad}
-              >
-                • {curiosidad}
-              </Text>
-
-            )
-          )
-        }
-
-
+        {especie.curiosidades.map((curiosidad: string, index: number) => (
+          <Text
+            key={index}
+            style={styles.curiosidad}
+          >
+            • {curiosidad}
+          </Text>
+        ))}
 
         <Pressable style={styles.boton}>
           <Text style={styles.botonTexto}>
@@ -201,31 +244,22 @@ export default function FichaEspecie() {
           </Text>
         </Pressable>
 
-
-
         <Pressable style={styles.botonSecundario}>
           <Text style={styles.botonTexto}>
             Registrar avistamiento
           </Text>
         </Pressable>
-
-
       </View>
-
     </ScrollView>
-
   );
 }
 
 
-
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-
 
   carta: {
     margin: 15,
@@ -233,7 +267,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: '#ffffff',
   },
-
 
   imagen: {
     height: 220,
@@ -243,11 +276,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-
   imagenTexto: {
     fontSize: 80,
   },
-
 
   nombre: {
     marginTop: 15,
@@ -256,28 +287,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-
   cientifico: {
     fontSize: 18,
     fontStyle: 'italic',
     textAlign: 'center',
   },
 
-
-  sello: {
-    alignSelf: 'center',
+  descripcion: {
     marginTop: 15,
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: '#dcefd8',
+    fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'center',
+    color: '#444444',
   },
-
-
-  selloTexto: {
-    fontWeight: 'bold',
-  },
-
 
   infoGrid: {
     marginTop: 20,
@@ -286,7 +308,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 10,
   },
-
 
   infoCard: {
     width: '48%',
@@ -297,11 +318,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-
   icono: {
     fontSize: 32,
   },
-
 
   tituloCard: {
     fontSize: 13,
@@ -310,33 +329,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-
   valorCard: {
     fontSize: 18,
     marginTop: 8,
     textAlign: 'center',
   },
 
-
   alimentacion: {
     backgroundColor: '#e5f3dc',
   },
-
 
   interaccion: {
     backgroundColor: '#f8ebc9',
   },
 
-
   conservacion: {
     backgroundColor: '#dcecf8',
   },
 
-
   observacion: {
     backgroundColor: '#eee6f7',
   },
-
 
   separador: {
     height: 1,
@@ -344,13 +357,11 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
 
-
   tituloSeccion: {
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 15,
   },
-
 
   datoLinea: {
     flexDirection: 'row',
@@ -358,12 +369,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
-
   curiosidad: {
     fontSize: 16,
     marginBottom: 10,
   },
-
 
   boton: {
     marginTop: 25,
@@ -373,7 +382,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-
   botonSecundario: {
     marginTop: 10,
     padding: 15,
@@ -382,9 +390,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-
   botonTexto: {
     fontWeight: 'bold',
   },
-
 });
