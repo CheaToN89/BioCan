@@ -14,6 +14,7 @@ import FloraInicio from '../screens/flora/FloraInicio';
 
 import EspeciesLista from '../screens/species/EspeciesLista';
 import FichaEspecie from '../screens/species/FichaEspecie';
+import FuenteExternaWebView from '../screens/species/FuenteExternaWebView';
 import { InicioStackParamList, MiDexStackParamList } from './types';
 
 
@@ -62,6 +63,15 @@ function InicioStack() {
 
 
       <Stack.Screen
+        name="FuenteExternaWebView"
+        component={FuenteExternaWebView}
+        options={({ route }) => ({
+          title: route.params.titulo,
+        })}
+      />
+
+
+      <Stack.Screen
         name="Terrestres"
         component={Terrestres}
         options={{ title: 'Terrestres' }}
@@ -103,6 +113,15 @@ function MiDexStack() {
         name="FichaEspecie"
         component={FichaEspecie}
         options={{ title: 'Ficha' }}
+      />
+
+
+      <MiDexStackNavigator.Screen
+        name="FuenteExternaWebView"
+        component={FuenteExternaWebView}
+        options={({ route }) => ({
+          title: route.params.titulo,
+        })}
       />
 
     </MiDexStackNavigator.Navigator>

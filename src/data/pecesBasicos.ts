@@ -39,7 +39,7 @@ export const pecesBasicos: Especie[] = [
       "Es uno de los herbívoros más importantes en los fondos rocosos de Canarias.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Sparisoma_cretense"
   },
 
 
@@ -81,7 +81,7 @@ export const pecesBasicos: Especie[] = [
       "Si se consume, puede provocar alucinaciones; no es un pez comestible seguro.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Sarpa_salpa"
   },
 
 
@@ -123,7 +123,7 @@ export const pecesBasicos: Especie[] = [
       "En primavera forma parejas para reproducirse cerca del fondo rocoso.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Diplodus_sargus"
   },
 
 
@@ -165,7 +165,7 @@ export const pecesBasicos: Especie[] = [
       "Caza activamente crustáceos y gusanos en las grietas de las rocas.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Thalassoma_pavo"
   },
 
 
@@ -209,7 +209,7 @@ export const pecesBasicos: Especie[] = [
       "Sale de noche a cazar peces, cefalópodos y crustáceos cerca de su guarida.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Muraena_augusti"
   }
 
 ];

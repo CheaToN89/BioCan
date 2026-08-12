@@ -20,6 +20,14 @@ export type FichaEspecieParams = {
   origen: FichaEspecieOrigen;
 };
 
+export type FuenteExternaTipo = 'wikipedia';
+
+export type FuenteExternaParams = {
+  url: string;
+  titulo: string;
+  fuente: FuenteExternaTipo;
+};
+
 export type InicioStackParamList = {
   InicioPrincipal: undefined;
   Explorar: undefined;
@@ -29,9 +37,11 @@ export type InicioStackParamList = {
   Terrestres: undefined;
   Flora: undefined;
   EspeciesLista: EspeciesListaParams;
+  FuenteExternaWebView: FuenteExternaParams;
 };
 
 export type MiDexStackParamList = {
   MiDexInicio: undefined;
   FichaEspecie: FichaEspecieParams;
+  FuenteExternaWebView: FuenteExternaParams;
 };

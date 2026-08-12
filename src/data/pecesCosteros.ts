@@ -41,7 +41,7 @@ export const pecesCosteros: Especie[] = [
       "Forma parte de la base alimenticia de depredadores costeros como la bicuda.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Boops_boops"
   },
 
 
@@ -86,7 +86,7 @@ export const pecesCosteros: Especie[] = [
       "Es uno de los pocos peces globo habituales en las costas de Canarias.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Sphoeroides_marmoratus"
   },
 
 
@@ -131,7 +131,7 @@ export const pecesCosteros: Especie[] = [
       "En época reproductiva puede formar parejas temporales sobre roca y arena.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Spondyliosoma_cantharus"
   },
 
 
@@ -174,7 +174,7 @@ export const pecesCosteros: Especie[] = [
       "En Canarias patrulla aguas abiertas y túneles rocosos en busca de peces pequeños.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Sphyraena_viridensis"
   },
 
 
@@ -219,7 +219,7 @@ export const pecesCosteros: Especie[] = [
       "Aunque no busca atacar al ser humano, conviene no introducir las manos en grietas donde pueda estar refugiada.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Muraena_helena"
   },
 
 
@@ -263,7 +263,7 @@ export const pecesCosteros: Especie[] = [
       "Acecha desde las grietas y captura crustáceos y peces pequeños de un salto.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Serranus_cabrilla"
   },
 
 
@@ -308,7 +308,7 @@ export const pecesCosteros: Especie[] = [
       "En Canarias fue históricamente muy pescado; hoy es clave en reservas marinas.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Epinephelus_marginatus"
   },
 
 
@@ -353,7 +353,7 @@ export const pecesCosteros: Especie[] = [
       "Los machos dominantes defienden un territorio con cuevas en el fondo rocoso.",
     ],
 
-    wikipedia: "https://es.wikipedia.org/"
+    wikipedia: "https://es.m.wikipedia.org/wiki/Mycteroperca_fusca"
   }
 
 ];

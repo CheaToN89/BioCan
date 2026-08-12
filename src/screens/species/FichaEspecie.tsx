@@ -1,5 +1,6 @@
 import { Alert, StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useAvistamientos } from '../../context/AvistamientosContext';
 import { getEspecieById } from '../../data';
@@ -12,10 +13,36 @@ const FRECUENCIA_LABELS: Record<FrecuenciaCanarias, string> = {
   raro: 'Raro',
 };
 
+function esEnlaceWikipediaValido(url?: string): boolean {
+  if (!url) {
+    return false;
+  }
+
+  try {
+    const { hostname, pathname } = new URL(url);
+    const esDominioWikipedia =
+      hostname === 'wikipedia.org' || hostname.endsWith('.wikipedia.org');
+
+    return (
+      esDominioWikipedia &&
+      pathname.startsWith('/wiki/') &&
+      pathname.length > '/wiki/'.length
+    );
+  } catch {
+    return false;
+  }
+}
+
+type FichaEspecieNavigationProp = NativeStackNavigationProp<
+  InicioStackParamList | MiDexStackParamList,
+  'FichaEspecie'
+>;
+
 export default function FichaEspecie() {
   const route = useRoute<
     RouteProp<InicioStackParamList | MiDexStackParamList, 'FichaEspecie'>
   >();
+  const navigation = useNavigation<FichaEspecieNavigationProp>();
   const { id, origen } = route.params;
   const {
     registrarAvistamiento,
@@ -56,6 +83,18 @@ export default function FichaEspecie() {
         Alert.alert('Especie añadida a Mi DEX');
       }
     })();
+  };
+
+  const handleMasInformacionPress = () => {
+    if (!especie?.wikipedia || !esEnlaceWikipediaValido(especie.wikipedia)) {
+      return;
+    }
+
+    navigation.navigate('FuenteExternaWebView', {
+      url: especie.wikipedia,
+      titulo: especie.nombreComun,
+      fuente: 'wikipedia',
+    });
   };
 
   if (!especie) {
@@ -322,11 +361,16 @@ export default function FichaEspecie() {
           </Text>
         ))}
 
-        <Pressable style={styles.boton}>
-          <Text style={styles.botonTexto}>
-            Ver en Wikipedia
-          </Text>
-        </Pressable>
+        {esEnlaceWikipediaValido(especie.wikipedia) && (
+          <Pressable
+            style={styles.boton}
+            onPress={handleMasInformacionPress}
+          >
+            <Text style={styles.botonTexto}>
+              Más información
+            </Text>
+          </Pressable>
+        )}
       </View>
     </ScrollView>
   );
