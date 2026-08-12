@@ -127,7 +127,7 @@ export default function FichaEspecie() {
                 </Text>
 
                 <Text style={styles.tituloCard}>
-                  INTERACCIÓN
+                  INTERACCIÓN CON EL SER HUMANO
                 </Text>
 
                 <Text style={styles.valorCard}>
@@ -153,30 +153,18 @@ export default function FichaEspecie() {
             )}
 
             {especie.frecuenciaCanarias && (
-              <View
-                style={[
-                  styles.infoCard,
-                  styles.frecuenciaCanarias,
-                  especie.notaFrecuencia && styles.infoCardConNota,
-                ]}
-              >
+              <View style={[styles.infoCard, styles.frecuenciaCanarias]}>
                 <Text style={styles.icono}>
                   👁
                 </Text>
 
                 <Text style={styles.tituloCard}>
-                  FRECUENCIA EN CANARIAS
+                  FRECUENCIA DE AVISTAMIENTO
                 </Text>
 
                 <Text style={styles.valorCard}>
                   {FRECUENCIA_LABELS[especie.frecuenciaCanarias]}
                 </Text>
-
-                {especie.notaFrecuencia && (
-                  <Text style={styles.notaFrecuenciaCard}>
-                    {especie.notaFrecuencia}
-                  </Text>
-                )}
               </View>
             )}
           </View>
@@ -439,19 +427,6 @@ const styles = StyleSheet.create({
 
   frecuenciaCanarias: {
     backgroundColor: '#eee6f7',
-  },
-
-  infoCardConNota: {
-    height: undefined,
-    minHeight: 140,
-  },
-
-  notaFrecuenciaCard: {
-    fontSize: 12,
-    marginTop: 6,
-    textAlign: 'center',
-    color: '#555555',
-    lineHeight: 16,
   },
 
   separador: {
