@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { InicioStackParamList, RootTabParamList } from '../navigation/types';
+import { InicioStackParamList } from '../navigation/types';
 
 type InicioNavigationProp = NativeStackNavigationProp<
   InicioStackParamList,
@@ -16,7 +15,6 @@ type Props = {
 export default function Inicio({ navigation }: Props) {
   return (
     <View style={styles.container}>
-
       <Text style={styles.title}>
         BioCan
       </Text>
@@ -25,63 +23,29 @@ export default function Inicio({ navigation }: Props) {
         Biodiversidad de Canarias
       </Text>
 
+      <Pressable
+        style={({ pressed }) => [
+          styles.cta,
+          pressed && styles.ctaPressed,
+        ]}
+        accessibilityRole="button"
+        accessibilityLabel="Explora la fauna y flora de Canarias"
+        onPress={() => navigation.navigate('Explorar')}
+      >
+        <Text style={styles.ctaIcon}>
+          🌿🐾
+        </Text>
 
-      <View style={styles.cardsContainer}>
-
-        <Pressable
-          style={[styles.card, styles.explorar]}
-          onPress={() => navigation.navigate('Explorar')}
-        >
-          <Text style={styles.icon}>
-            🐾
-          </Text>
-
-          <Text style={styles.cardTitle}>
-            Explorar
-          </Text>
-        </Pressable>
-
-
-        <Pressable
-          style={[styles.card, styles.dex]}
-          onPress={() =>
-            navigation
-              .getParent<BottomTabNavigationProp<RootTabParamList>>('RootTabs' as never)
-              ?.navigate('Mi DEX')
-          }
-        >
-          <Text style={styles.icon}>
-            📖
-          </Text>
-
-          <Text style={styles.cardTitle}>
-            Mi DEX
-          </Text>
-        </Pressable>
-
-
-        <Pressable
-          style={[styles.card, styles.perfil]}
-        >
-          <Text style={styles.icon}>
-            👤
-          </Text>
-
-          <Text style={styles.cardTitle}>
-            Perfil
-          </Text>
-        </Pressable>
-
-
-      </View>
-
+        <Text style={styles.ctaText}>
+          Explora la fauna y flora de Canarias
+        </Text>
+      </Pressable>
     </View>
   );
 }
 
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
@@ -90,61 +54,44 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-
   title: {
     fontSize: 42,
     fontWeight: 'bold',
     marginBottom: 10,
   },
 
-
   subtitle: {
     fontSize: 18,
-    marginBottom: 40,
+    marginBottom: 48,
+    textAlign: 'center',
   },
 
-
-  cardsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 20,
-  },
-
-
-  card: {
-    width: 150,
-    height: 150,
-    borderRadius: 22,
+  cta: {
+    width: '100%',
+    maxWidth: 340,
+    minHeight: 180,
+    borderRadius: 24,
+    backgroundColor: '#dcefd8',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 28,
+    paddingVertical: 32,
   },
 
-
-  explorar: {
-    backgroundColor: '#dcefd8',
+  ctaPressed: {
+    backgroundColor: '#c8e4c0',
   },
 
-
-  dex: {
-    backgroundColor: '#f3e4c1',
+  ctaIcon: {
+    fontSize: 48,
+    marginBottom: 16,
   },
 
-
-  perfil: {
-    backgroundColor: '#dfe7f2',
-  },
-
-
-  icon: {
-    fontSize: 45,
-    marginBottom: 12,
-  },
-
-
-  cardTitle: {
-    fontSize: 20,
+  ctaText: {
+    fontSize: 22,
     fontWeight: '600',
+    textAlign: 'center',
+    lineHeight: 30,
+    color: '#1a1a1a',
   },
-
 });
