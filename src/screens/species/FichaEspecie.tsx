@@ -1,9 +1,29 @@
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+
+import { getEspecieById } from '../../data';
+import { InicioStackParamList } from '../../navigation/types';
 
 export default function FichaEspecie() {
-  const route = useRoute<any>();
-  const { especie } = route.params;
+  const route = useRoute<RouteProp<InicioStackParamList, 'FichaEspecie'>>();
+  const { id } = route.params;
+  const especie = getEspecieById(id);
+
+  if (!especie) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.carta}>
+          <Text style={styles.nombre}>
+            Especie no encontrada
+          </Text>
+
+          <Text style={styles.descripcion}>
+            No hemos podido cargar la información de esta especie.
+          </Text>
+        </View>
+      </View>
+    );
+  }
 
   const tieneInfoCards =
     especie.alimentacion ||

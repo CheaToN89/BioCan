@@ -1,4 +1,4 @@
-import { Categoria, Especie, Grupo, Subgrupo } from '../data/types';
+import { Categoria, Grupo, Subgrupo } from '../data/types';
 
 export type RootTabParamList = {
   Inicio: undefined;
@@ -18,7 +18,7 @@ export type InicioStackParamList = {
   Explorar: undefined;
   Fauna: undefined;
   Marinos: undefined;
-  FichaEspecie: { especie: Especie };
+  FichaEspecie: { id: string };
   Terrestres: undefined;
   Flora: undefined;
   EspeciesLista: EspeciesListaParams;

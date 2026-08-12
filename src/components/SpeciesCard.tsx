@@ -9,12 +9,13 @@ import {
 
 import { Especie } from '../data/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { InicioStackParamList } from '../navigation/types';
 
 
 type Props = {
   especie: Especie;
   avistada?: boolean;
-  navigation: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<InicioStackParamList>;
 };
 
 
@@ -29,7 +30,7 @@ export default function SpeciesCard({
     <Pressable
       onPress={() =>
         navigation.navigate('FichaEspecie', {
-          especie,
+          id: especie.id,
         })
       }
     >

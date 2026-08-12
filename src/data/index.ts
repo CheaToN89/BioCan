@@ -39,3 +39,8 @@ export function getEspecies(filtro: FiltroEspecies = {}): Especie[] {
     return true;
   });
 }
+
+
+export function getEspecieById(id: string): Especie | undefined {
+  return especies.find((especie) => especie.id === id);
+}
