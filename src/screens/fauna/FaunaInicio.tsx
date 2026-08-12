@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type FaunaNavigationProp = NativeStackNavigationProp<any>;
+import { InicioStackParamList } from '../../navigation/types';
+
+type FaunaNavigationProp = NativeStackNavigationProp<InicioStackParamList, 'Fauna'>;
 
 type Props = {
   navigation: FaunaNavigationProp;
@@ -43,7 +45,14 @@ export default function FaunaInicio({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.aves]}
-          onPress={() => navigation.navigate('Aves')}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Aves',
+              subgrupo: 'Aves',
+              titulo: 'Aves',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🐦

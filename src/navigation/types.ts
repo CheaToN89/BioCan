@@ -20,7 +20,6 @@ export type InicioStackParamList = {
   Marinos: undefined;
   FichaEspecie: { especie: Especie };
   Terrestres: undefined;
-  Aves: undefined;
   Flora: undefined;
   EspeciesLista: EspeciesListaParams;
 };
