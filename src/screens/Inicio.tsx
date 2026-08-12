@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type InicioNavigationProp = NativeStackNavigationProp<any>;
+import { InicioStackParamList, RootTabParamList } from '../navigation/types';
+
+type InicioNavigationProp = NativeStackNavigationProp<
+  InicioStackParamList,
+  'InicioPrincipal'
+>;
 
 type Props = {
   navigation: InicioNavigationProp;
@@ -38,7 +44,11 @@ export default function Inicio({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.dex]}
-          onPress={() => navigation.navigate('Mi DEX')}
+          onPress={() =>
+            navigation
+              .getParent<BottomTabNavigationProp<RootTabParamList>>('RootTabs' as never)
+              ?.navigate('Mi DEX')
+          }
         >
           <Text style={styles.icon}>
             📖

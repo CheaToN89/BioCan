@@ -153,7 +153,7 @@ function InicioStack() {
 
 export default function AppNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator id="RootTabs">
 
       <Tab.Screen
         name="Inicio"
