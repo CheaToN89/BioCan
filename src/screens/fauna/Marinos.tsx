@@ -51,6 +51,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.tiburones]}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Tiburones',
+              titulo: 'Tiburones y rayas',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🦈
@@ -64,6 +72,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.cetaceos]}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Cetáceos',
+              titulo: 'Cetáceos',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🐋
@@ -77,6 +93,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.tortugas]}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Tortugas',
+              titulo: 'Tortugas',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🐢
@@ -90,6 +114,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.cefalopodos]}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Cefalópodos',
+              titulo: 'Cefalópodos',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🐙
@@ -103,6 +135,14 @@ export default function Marinos({ navigation }: Props) {
 
         <Pressable
           style={[styles.card, styles.invertebrados]}
+          onPress={() =>
+            navigation.navigate('EspeciesLista', {
+              categoria: 'Fauna',
+              grupo: 'Marinos',
+              subgrupo: 'Invertebrados',
+              titulo: 'Invertebrados',
+            })
+          }
         >
           <Text style={styles.cardIcon}>
             🦀
@@ -110,19 +150,6 @@ export default function Marinos({ navigation }: Props) {
 
           <Text style={styles.cardTitle}>
             Invertebrados
-          </Text>
-        </Pressable>
-
-
-        <Pressable
-          style={[styles.card, styles.otros]}
-        >
-          <Text style={styles.cardIcon}>
-            🪼
-          </Text>
-
-          <Text style={styles.cardTitle}>
-            Otros
           </Text>
         </Pressable>
 
@@ -222,11 +249,6 @@ const styles = StyleSheet.create({
 
   invertebrados: {
     backgroundColor: '#f7d6e0',
-  },
-
-
-  otros: {
-    backgroundColor: '#eeeeee',
   },
 
 });
